@@ -1,0 +1,16 @@
+node_modules/
+dist/
+
+replays/
+
+*.log
+
+# editors
+.vscode/
+.idea/
+
+# manager
+db.sqlite3
+tmp/
+versions/
+versions.txt
