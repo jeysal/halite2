@@ -24,7 +24,7 @@ GParsPool.withPool {
       waitFor(['git', 'clone', '--no-checkout', '.', tmpPath].execute())
       waitFor(['git', 'checkout', it.rev].execute(null, new File(tmpPath)))
       waitFor(['yarn'].execute(null, new File(tmpPath)))
-      waitFor(['yarn', 'build'].execute(null, new File(tmpPath)))
+      waitFor(['yarn', 'build-once'].execute(null, new File(tmpPath)))
       if (!new File("$tmpPath/dist/MyBot.js").renameTo(versionPath))
         System.exit(11)
       new File(tmpPath).deleteDir()
