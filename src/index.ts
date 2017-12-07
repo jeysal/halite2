@@ -3,7 +3,7 @@ import { Action, start } from 'halite/Game';
 import GameMap from 'halite/GameMap';
 
 import { closestPoint } from './geometry/distance';
-import { closestFreeOrOwnPlanet } from './planet/distance';
+import { closestDockingCandidate } from './planet/distance';
 
 start({
   strategy,
@@ -15,13 +15,13 @@ function strategy<Turn>(
   gameMap: GameMap<Turn>,
 ): ((string & Action<Turn>) | null)[] {
   return gameMap.myShips.map(ship => {
-    const freePlanet = closestFreeOrOwnPlanet(ship, gameMap.planets);
-    if (freePlanet) {
-      if (ship.canDock(freePlanet)) return ship.dock(freePlanet);
+    const dockingCandidate = closestDockingCandidate(ship, gameMap.planets);
+    if (dockingCandidate) {
+      if (ship.canDock(dockingCandidate)) return ship.dock(dockingCandidate);
       return ship.navigate({
-        target: freePlanet,
+        target: dockingCandidate,
         speed: MAX_SPEED / 1.75,
-        keepDistanceToTarget: freePlanet.radius + SHIP_RADIUS,
+        keepDistanceToTarget: dockingCandidate.radius + SHIP_RADIUS,
       });
     }
 
