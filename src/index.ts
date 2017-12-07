@@ -20,14 +20,14 @@ function strategy<Turn>(
       if (ship.canDock(dockingCandidate)) return ship.dock(dockingCandidate);
       return ship.navigate({
         target: dockingCandidate,
-        speed: MAX_SPEED / 1.75,
+        speed: MAX_SPEED,
         keepDistanceToTarget: dockingCandidate.radius + SHIP_RADIUS,
       });
     }
 
     const enemyShip = closestPoint(ship, gameMap.enemyShips);
     if (enemyShip) {
-      return ship.navigate({ target: enemyShip, speed: MAX_SPEED / 1.5 });
+      return ship.navigate({ target: enemyShip, speed: MAX_SPEED });
     }
 
     return null;
