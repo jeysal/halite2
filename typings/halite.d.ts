@@ -345,7 +345,7 @@ declare module 'halite/Ship' {
 
     readonly weaponCooldown: number;
 
-    constructor(gameMap: GameMap, ownerId: PlayerId, params: object);
+    constructor(gameMap: GameMap, ownerId: number, params: object);
 
     isDocked(): boolean;
     isUndocked(): boolean;

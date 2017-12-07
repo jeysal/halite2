@@ -1,10 +1,10 @@
-import { Point } from 'halite/Geometry';
 import Planet from 'halite/Planet';
+import Ship from 'halite/Ship';
 import { filter } from 'ramda';
 
 import { closestPoint } from '../geometry/distance';
 
-export const closestFreePlanet = <Turn, T extends Planet<Turn>>(
-  base: Point,
+export const closestFreeOrOwnPlanet = <Turn, T extends Planet<Turn>>(
+  ship: Ship<Turn>,
   planets: T[],
-) => closestPoint(base, filter(planet => planet.isFree(), planets));
+) => closestPoint(ship, filter(planet => !planet.isOwnedByEnemy(), planets));
