@@ -341,7 +341,7 @@ declare module 'halite/Ship' {
 
     readonly dockingStatus: DockingStatus;
     readonly dockingProgress: number;
-    readonly dockedPlanetId: PlanetId<Turn>;
+    readonly dockedPlanetId: number & PlanetId<Turn>;
 
     readonly weaponCooldown: number;
 
@@ -363,7 +363,7 @@ declare module 'halite/Ship' {
     readonly id: number & EnemyShipId<Turn>;
     readonly ownerId: number & EnemyPlayerId;
 
-    readonly dockedPlanetId: EnemyPlanetId<Turn>;
+    readonly dockedPlanetId: number & EnemyPlanetId<Turn>;
 
     canDock(planet: OwnPlanet<Turn>): false;
     canDock(planet: Planet<Turn>): planet is Dockable<this, Turn>;
@@ -373,7 +373,7 @@ declare module 'halite/Ship' {
     readonly id: number & OwnShipId<Turn>;
     readonly ownerId: number & OwnPlayerId;
 
-    readonly dockedPlanetId: OwnPlanetId<Turn>;
+    readonly dockedPlanetId: number & OwnPlanetId<Turn>;
 
     canDock(planet: EnemyPlanet<Turn>): false;
     canDock(planet: Planet<Turn>): planet is Dockable<this, Turn>;
