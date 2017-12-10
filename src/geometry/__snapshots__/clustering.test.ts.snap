@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dbscan clusters points correctly 1`] = `
+Array [
+  Array [
+    Object {
+      "x": 0,
+      "y": 0.5,
+    },
+    Object {
+      "x": 3,
+      "y": 1.2,
+    },
+    Object {
+      "x": -2,
+      "y": 3,
+    },
+    Object {
+      "x": 0.7,
+      "y": 1,
+    },
+  ],
+  Array [
+    Object {
+      "x": 7.5,
+      "y": -10,
+    },
+    Object {
+      "x": 8.3,
+      "y": -8,
+    },
+    Object {
+      "x": 5,
+      "y": -10,
+    },
+  ],
+]
+`;

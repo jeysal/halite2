@@ -5,13 +5,14 @@ import { distance } from 'halite/Geometry';
 import { EnemyShip, OwnShip } from 'halite/Ship';
 
 import { center } from '../../geometry/center';
+import { dbscan } from '../../geometry/clustering';
 import { diameter } from '../../geometry/game-map';
 import { findPlanetById } from '../../guards';
 import DockGoal from '../dock/dock-goal';
 import Goal from '../goal';
 
 const BASE_VALUE = 0.2;
-const valueForSwarmSize = (x: number): number => 0.5 * x * x / (x * x + 4 * x);
+const valueForSwarmSize = (x: number): number => 0.4 * x * x / (x * x + 4 * x);
 const DOCK_VALUE_RATIO = 0.75;
 
 const MIN_SWARM_SIZE_RATIO = 1.5;
@@ -66,3 +67,10 @@ export default class AttackGoal<Turn> implements Goal<Turn> {
     });
   }
 }
+
+const DBSCAN_EPSILON = 1.5 * MAX_SPEED;
+
+export const determineAttackGoals = <Turn>(
+  gm: GameMap<Turn>,
+): AttackGoal<Turn>[] =>
+  dbscan(gm.enemyShips, DBSCAN_EPSILON, 1).map(swarm => new AttackGoal(swarm)); // minPts = 1, so this is effectively hierarchical clustering

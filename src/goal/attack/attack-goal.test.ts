@@ -2,9 +2,10 @@ import DockingStatus from 'halite/DockingStatus';
 import GameMap from 'halite/GameMap';
 import Ship, { EnemyShip } from 'halite/Ship';
 
+import { goalStats } from '../../test/goal';
 import { emptyMap } from '../../test/util';
 
-import AttackGoal from './attack-goal';
+import AttackGoal, { determineAttackGoals } from './attack-goal';
 
 describe('value', () => {
   test('is low for a swarm that just floats around', () => {
@@ -119,6 +120,64 @@ describe('strive', () => {
           y: 50,
           dockingStatus: DockingStatus.DOCKED,
         }) as any,
+      ),
+    ).toMatchSnapshot();
+  });
+});
+
+describe('determineAttackGoals', () => {
+  test('creates an attack goal for each enemy swarm', () => {
+    const gm = new GameMap({ myPlayerId: 0, width: 100, height: 100 });
+    gm.addPlanets([{ id: 1000, x: 73, y: 29, radius: 2, ownerId: 1 }]);
+    gm.addPlayerShips(1, [
+      {
+        id: 100,
+        x: 15,
+        y: 17,
+        radius: 1,
+        dockingStatus: DockingStatus.UNDOCKED,
+      },
+      {
+        id: 101,
+        x: 13,
+        y: 15,
+        radius: 1,
+        dockingStatus: DockingStatus.UNDOCKED,
+      },
+      {
+        id: 102,
+        x: 17,
+        y: 16,
+        radius: 1,
+        dockingStatus: DockingStatus.UNDOCKED,
+      },
+      {
+        id: 103,
+        x: 75,
+        y: 30,
+        radius: 1,
+        dockingStatus: DockingStatus.DOCKED,
+        dockedPlanetId: 1000,
+      },
+      {
+        id: 104,
+        x: 79,
+        y: 26,
+        radius: 1,
+        dockingStatus: DockingStatus.UNDOCKED,
+      },
+      {
+        id: 105,
+        x: 65,
+        y: 39,
+        radius: 1,
+        dockingStatus: DockingStatus.UNDOCKED,
+      },
+    ]);
+
+    expect(
+      determineAttackGoals(gm).map(goal =>
+        goalStats(goal, new Ship(gm, 0, { id: 42, x: 70, y: 70 }), gm),
       ),
     ).toMatchSnapshot();
   });

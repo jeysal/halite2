@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`determineDockGoals creates a dock goal for each own or free planet 1`] = `
+Array [
+  Object {
+    "action": "t 42 7 220",
+    "maxShips": 3,
+    "minShips": 1,
+    "suitability": 0.34807975947973513,
+    "value": 0.6492893218813452,
+  },
+  Object {
+    "action": "t 42 7 206",
+    "maxShips": 4,
+    "minShips": 1,
+    "suitability": 0.5256583509747432,
+    "value": 0.7128522335788114,
+  },
+  Object {
+    "action": "t 42 7 213",
+    "maxShips": 3,
+    "minShips": 1,
+    "suitability": 0.7450490243203608,
+    "value": 0.785857864376269,
+  },
+]
+`;
+
 exports[`strive docks at a dockable planet 1`] = `"d 105 42"`;
 
 exports[`strive navigates towards a non-dockable planet 1`] = `"t 105 7 225"`;

@@ -60,3 +60,8 @@ export default class DockGoal<Turn = number> implements Goal<Turn> {
     });
   }
 }
+
+export const determineDockGoals = <Turn>(gm: GameMap<Turn>): DockGoal<Turn>[] =>
+  gm.planets
+    .filter(planet => !planet.isOwnedByEnemy())
+    .map(planet => new DockGoal(planet));

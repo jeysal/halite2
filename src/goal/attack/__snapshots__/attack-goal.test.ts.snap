@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`determineAttackGoals creates an attack goal for each enemy swarm 1`] = `
+Array [
+  Object {
+    "action": "t 42 7 226",
+    "maxShips": 8,
+    "minShips": 5,
+    "suitability": 0.6729862388216667,
+    "value": 0.37142857142857144,
+  },
+  Object {
+    "action": "t 42 7 279",
+    "maxShips": 5,
+    "minShips": 3,
+    "suitability": 0.819351169392105,
+    "value": 0.5002992600150155,
+  },
+  Object {
+    "action": "t 42 7 263",
+    "maxShips": 3,
+    "minShips": 2,
+    "suitability": 0.8667783801329529,
+    "value": 0.28,
+  },
+]
+`;
+
 exports[`maxShips returns a reasonable maximum for a large enemy swarm 1`] = `20`;
 
 exports[`maxShips returns a reasonable maximum for a small enemy swarm 1`] = `3`;
@@ -18,6 +44,6 @@ exports[`suitability is low for a docked nearby ship 1`] = `0.5397007462732747`;
 
 exports[`suitability is low for an undocked distant ship 1`] = `0.5799571450435087`;
 
-exports[`value is high for a swarm that guards a docked planet 1`] = `0.4891666666666667`;
+exports[`value is high for a swarm that guards a docked planet 1`] = `0.48083333333333333`;
 
-exports[`value is low for a swarm that just floats around 1`] = `0.3666666666666667`;
+exports[`value is low for a swarm that just floats around 1`] = `0.33333333333333337`;

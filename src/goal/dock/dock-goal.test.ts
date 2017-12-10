@@ -3,9 +3,10 @@ import GameMap from 'halite/GameMap';
 import Planet from 'halite/Planet';
 import Ship, { OwnShip } from 'halite/Ship';
 
+import { goalStats } from '../../test/goal';
 import { emptyMap } from '../../test/util';
 
-import DockGoal from './dock-goal';
+import DockGoal, { determineDockGoals } from './dock-goal';
 
 describe('value', () => {
   test('is appropriate for a central planet', () => {
@@ -142,6 +143,24 @@ describe('strive', () => {
         x: 90,
         y: 90,
       }) as OwnShip),
+    ).toMatchSnapshot();
+  });
+});
+
+describe('determineDockGoals', () => {
+  test('creates a dock goal for each own or free planet', () => {
+    const gm = new GameMap({ myPlayerId: 0, width: 100, height: 100 });
+    gm.addPlanets([
+      { id: 100, x: 10, y: 20, radius: 2, dockingSpots: 3 },
+      { id: 101, x: 20, y: 50, radius: 5, dockingSpots: 4 },
+      { id: 102, x: 50, y: 60, radius: 2, dockingSpots: 3, ownerId: 0 },
+      { id: 102, x: 70, y: 60, radius: 6, dockingSpots: 5, ownerId: 1 },
+    ]);
+
+    expect(
+      determineDockGoals(gm).map(goal =>
+        goalStats(goal, new Ship(gm, 0, { id: 42, x: 80, y: 80 }), gm),
+      ),
     ).toMatchSnapshot();
   });
 });
