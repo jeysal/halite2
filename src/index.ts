@@ -5,15 +5,9 @@ import GameMap from 'halite/GameMap';
 import { closestPoint } from './geometry/distance';
 import { closestDockingCandidate } from './planet/distance';
 
-start({
-  strategy,
-  botName: 'jeysal',
-  preProcessing: () => {},
-});
-
-function strategy<Turn>(
+const strategy = <Turn>(
   gameMap: GameMap<Turn>,
-): ((string & Action<Turn>) | null)[] {
+): ((string & Action<Turn>) | null)[] => {
   return gameMap.myShips.map(ship => {
     const dockingCandidate = closestDockingCandidate(ship, gameMap.planets);
     if (dockingCandidate) {
@@ -32,4 +26,10 @@ function strategy<Turn>(
 
     return null;
   });
-}
+};
+
+start({
+  strategy,
+  botName: 'jeysal',
+  preProcessing: () => {},
+});
