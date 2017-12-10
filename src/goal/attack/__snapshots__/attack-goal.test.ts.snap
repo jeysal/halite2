@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`maxShips returns a reasonable maximum for a large enemy swarm 1`] = `20`;
+
+exports[`maxShips returns a reasonable maximum for a small enemy swarm 1`] = `3`;
+
+exports[`minShips returns a reasonable minimum for a large enemy swarm 1`] = `12`;
+
+exports[`minShips returns a reasonable minimum for a small enemy swarm 1`] = `2`;
+
+exports[`strive navigates towards the enemy swarm 1`] = `"t 42 7 225"`;
+
+exports[`strive undocks a docked ship 1`] = `"u 42"`;
+
+exports[`suitability is high for an undocked nearby ship 1`] = `0.9397007462732747`;
+
+exports[`suitability is low for a docked nearby ship 1`] = `0.5397007462732747`;
+
+exports[`suitability is low for an undocked distant ship 1`] = `0.5799571450435087`;
+
+exports[`value is high for a swarm that guards a docked planet 1`] = `0.4475`;
+
+exports[`value is low for a swarm that just floats around 1`] = `0.2`;

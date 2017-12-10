@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`strive docks at a dockable planet 1`] = `"d 105 42"`;
+
+exports[`strive navigates towards a non-dockable planet 1`] = `"t 105 7 225"`;
+
+exports[`suitability is appropriate for a distant ship 1`] = `0.25`;
+
+exports[`suitability is appropriate for a nearby ship 1`] = `0.95`;
+
+exports[`value is appropriate for a central planet 1`] = `0.6`;
+
+exports[`value is appropriate for a remote planet 1`] = `0.53`;
+
+exports[`value is high if nearby planets are already owned 1`] = `0.72`;
+
+exports[`value is low if no nearby planets are already owned 1`] = `0.5800000000000001`;

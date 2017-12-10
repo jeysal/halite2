@@ -31,7 +31,11 @@ declare module 'halite/DockingStatus' {
 declare module 'halite/Entity' {
   import { Circle } from 'halite/Geometry';
 
-  export default abstract class Entity<Turn = number> implements Circle {
+  export interface GameObject extends Circle {
+    readonly id: number;
+  }
+
+  export default abstract class Entity<Turn = number> implements GameObject {
     readonly x: number;
     readonly y: number;
 
@@ -42,9 +46,9 @@ declare module 'halite/Entity' {
 
     constructor(params: any);
 
-    distanceBetween(target: Entity<any>): number;
+    distanceBetween(target: GameObject<any>): number;
 
-    angleBetweenInDegree(target: Entity<any>): number;
+    angleBetweenInDegree(target: GameObject<any>): number;
   }
 }
 
@@ -65,7 +69,7 @@ declare module 'halite/Game' {
 }
 
 declare module 'halite/GameMap' {
-  import Entity from 'halite/Entity';
+  import { GameObject } from 'halite/Entity';
   import Planet from 'halite/Planet';
   import Ship, {
     EnemyShip,
@@ -117,18 +121,24 @@ declare module 'halite/GameMap' {
     shipsByIds(ids: (number & OwnShipId<any>)[]): OwnShip<Turn>[];
     shipsByIds(ids: number[]): Ship<Turn>;
 
-    shipsBetween(start: Entity<Turn>, end: Entity<Turn>): Ship<Turn>[];
+    shipsBetween(start: GameObject<Turn>, end: GameObject<Turn>): Ship<Turn>[];
     enemyShipsBetween(
-      start: Entity<Turn>,
-      end: Entity<Turn>,
+      start: GameObject<Turn>,
+      end: GameObject<Turn>,
     ): EnemyShip<Turn>[];
-    ownShipBetween(start: Entity<Turn>, end: Entity<Turn>): OwnShip<Turn>[];
+    myShipsBetween(
+      start: GameObject<Turn>,
+      end: GameObject<Turn>,
+    ): OwnShip<Turn>[];
 
-    planetsBetween(start: Entity<Turn>, end: Entity<Turn>): Planet<Turn>[];
+    planetsBetween(
+      start: GameObject<Turn>,
+      end: GameObject<Turn>,
+    ): Planet<Turn>[];
 
     obstaclesBetween(
-      start: Entity<Turn>,
-      end: Entity<Turn>,
+      start: GameObject<Turn>,
+      end: GameObject<Turn>,
     ): (Ship<Turn> | Planet<Turn>)[];
 
     addPlayerId(playerId: number): void;
@@ -305,7 +315,7 @@ declare module 'halite/Planet' {
 
 declare module 'halite/Ship' {
   import DockingStatus from 'halite/DockingStatus';
-  import Entity from 'halite/Entity';
+  import Entity, { GameObject } from 'halite/Entity';
   import { Action } from 'halite/Game';
   import GameMap, {
     PlayerId,
@@ -383,7 +393,7 @@ declare module 'halite/Ship' {
 
     thrust(magnitude: number, angle: number): string & Action<Turn>;
     navigate(navigation: {
-      target: Entity<Turn>;
+      target: GameObject<Turn>;
       keepDistanceToTarget?: number;
       speed: number;
       avoidObstacles?: boolean;

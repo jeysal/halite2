@@ -2,7 +2,14 @@
  This file contains type guard helpers that are useful mostly for figuring out ownership relations.
 */
 
-import { EnemyPlayerId, OwnPlayerId, PlayerId } from 'halite/GameMap';
+import GameMap, { EnemyPlayerId, OwnPlayerId, PlayerId } from 'halite/GameMap';
+import Planet, {
+  EnemyPlanet,
+  EnemyPlanetId,
+  OwnPlanet,
+  OwnPlanetId,
+  PlanetId,
+} from 'halite/Planet';
 import Ship, { EnemyShip, OwnShip } from 'halite/Ship';
 
 export function shipBelongsToPlayer<Turn>(
@@ -42,4 +49,23 @@ export function shipBelongsToPlayer<Turn>(
   playerId: number & PlayerId,
 ): boolean {
   return ship.ownerId === playerId;
+}
+
+export function findPlanetById<Turn>(
+  planetId: number & EnemyPlanetId<Turn>,
+  gameMap: GameMap<Turn>,
+): EnemyPlanet<Turn>;
+export function findPlanetById<Turn>(
+  planetId: number & OwnPlanetId<Turn>,
+  gameMap: GameMap<Turn>,
+): OwnPlanet<Turn>;
+export function findPlanetById<Turn>(
+  planetId: number & PlanetId<Turn>,
+  gameMap: GameMap<Turn>,
+): Planet<Turn>;
+export function findPlanetById<Turn>(
+  planetId: number,
+  gameMap: GameMap<Turn>,
+): Planet<Turn> | undefined {
+  return gameMap.planets.find(planet => planet.id === planetId);
 }
