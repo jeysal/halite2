@@ -11,6 +11,7 @@ import DockGoal from '../dock/dock-goal';
 import Goal from '../goal';
 
 const BASE_VALUE = 0.2;
+const valueForSwarmSize = (x: number): number => 0.5 * x * x / (x * x + 4 * x);
 const DOCK_VALUE_RATIO = 0.75;
 
 const MIN_SWARM_SIZE_RATIO = 1.5;
@@ -25,7 +26,7 @@ export default class AttackGoal<Turn> implements Goal<Turn> {
   constructor(private enemySwarm: EnemyShip<Turn>[]) {}
 
   value(gm: GameMap<Turn>): number {
-    let value = BASE_VALUE;
+    let value = BASE_VALUE + valueForSwarmSize(this.enemySwarm.length);
 
     const dockedShip = this.enemySwarm.find(
       enemyShip => !enemyShip.isUndocked(),

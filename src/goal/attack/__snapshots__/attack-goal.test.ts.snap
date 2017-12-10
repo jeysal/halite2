@@ -18,6 +18,6 @@ exports[`suitability is low for a docked nearby ship 1`] = `0.5397007462732747`;
 
 exports[`suitability is low for an undocked distant ship 1`] = `0.5799571450435087`;
 
-exports[`value is high for a swarm that guards a docked planet 1`] = `0.4475`;
+exports[`value is high for a swarm that guards a docked planet 1`] = `0.4891666666666667`;
 
-exports[`value is low for a swarm that just floats around 1`] = `0.2`;
+exports[`value is low for a swarm that just floats around 1`] = `0.3666666666666667`;
