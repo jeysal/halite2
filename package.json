@@ -16,7 +16,7 @@
     "test": "jest --watch --coverage",
     "build-once": "webpack",
     "build": "webpack --watch",
-    "start": "./halite -d '240 160' -i replays 'node dist/MyBot.js' 'node dist/MyBot.js' 'node dist/MyBot.js' 'node dist/MyBot.js'",
+    "start": "./halite -d '240 160' -i replays 'node dist/MyBot.js 2>bot-0.err.log' 'node dist/MyBot.js 2>bot-1.err.log' 'node dist/MyBot.js 2>bot-2.err.log' 'node dist/MyBot.js 2>bot-3.err.log'",
     "view": "electron node_modules/chlorine -o",
     "manager": "node_modules/halite/tools/manager/manager.py",
     "versions": "run-s add-versions run-versions",
