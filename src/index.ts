@@ -1,31 +1,18 @@
-import { MAX_SPEED, SHIP_RADIUS } from 'halite/Constants';
 import { Action, start } from 'halite/Game';
 import GameMap from 'halite/GameMap';
 
-import { closestPoint } from './geometry/distance';
-import { closestDockingCandidate } from './planet/distance';
+import assignGoalsToShips from './goal/assignment';
+import { determineAttackGoals } from './goal/attack/attack-goal';
+import { determineDockGoals } from './goal/dock/dock-goal';
 
 const strategy = <Turn>(
-  gameMap: GameMap<Turn>,
+  gm: GameMap<Turn>,
 ): ((string & Action<Turn>) | null)[] => {
-  return gameMap.myShips.map(ship => {
-    const dockingCandidate = closestDockingCandidate(ship, gameMap.planets);
-    if (dockingCandidate) {
-      if (ship.canDock(dockingCandidate)) return ship.dock(dockingCandidate);
-      return ship.navigate({
-        target: dockingCandidate,
-        speed: MAX_SPEED,
-        keepDistanceToTarget: dockingCandidate.radius + SHIP_RADIUS,
-      });
-    }
-
-    const enemyShip = closestPoint(ship, gameMap.enemyShips);
-    if (enemyShip) {
-      return ship.navigate({ target: enemyShip, speed: MAX_SPEED });
-    }
-
-    return null;
-  });
+  const goals = [...determineDockGoals(gm), ...determineAttackGoals(gm)];
+  const shipsWithGoals = assignGoalsToShips(goals, gm);
+  return shipsWithGoals.map(shipWithGoal =>
+    shipWithGoal.goal.strive(shipWithGoal.ship),
+  );
 };
 
 start({
