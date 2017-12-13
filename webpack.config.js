@@ -5,6 +5,8 @@ const webpack = require('webpack');
 
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
+const PermissionsPlugin = require('webpack-permissions-plugin');
+
 module.exports = {
   context: resolvePath(),
 
@@ -32,6 +34,12 @@ module.exports = {
 
   plugins: [
     new ProgressBarPlugin(),
+
+    // make output bundle executable
+    new webpack.BannerPlugin({ banner: '#!/usr/bin/env node', raw: true }),
+    new PermissionsPlugin({
+      buildFiles: [{ path: resolvePath('dist/MyBot.js'), fileMode: '755' }],
+    }),
 
     new webpack.optimize.ModuleConcatenationPlugin(),
   ],

@@ -60,6 +60,7 @@
     "tslint-plugin-prettier": "^1.3.0",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0",
-    "webpack-node-externals": "^1.6.0"
+    "webpack-node-externals": "^1.6.0",
+    "webpack-permissions-plugin": "^0.0.2"
   }
 }
