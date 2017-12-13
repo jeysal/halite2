@@ -4,30 +4,36 @@ exports[`considers both value and suitability 1`] = `
 Array [
   Array [
     Object {
+      "goalIndex": 0,
       "shipId": 0,
       "val": 0.3,
     },
     Object {
+      "goalIndex": 1,
       "shipId": 0,
       "val": 0.4,
     },
   ],
   Array [
     Object {
+      "goalIndex": 0,
       "shipId": 1,
       "val": 0.5,
     },
     Object {
+      "goalIndex": 1,
       "shipId": 1,
       "val": 0.6,
     },
   ],
   Array [
     Object {
+      "goalIndex": 0,
       "shipId": 2,
       "val": 0.7,
     },
     Object {
+      "goalIndex": 1,
       "shipId": 2,
       "val": 0.5,
     },
@@ -39,30 +45,36 @@ exports[`generates a value for each ship-goal combination 1`] = `
 Array [
   Array [
     Object {
+      "goalIndex": 0,
       "shipId": 0,
       "val": 0.5,
     },
     Object {
+      "goalIndex": 1,
       "shipId": 0,
       "val": 0.5,
     },
   ],
   Array [
     Object {
+      "goalIndex": 0,
       "shipId": 1,
       "val": 0.5,
     },
     Object {
+      "goalIndex": 1,
       "shipId": 1,
       "val": 0.5,
     },
   ],
   Array [
     Object {
+      "goalIndex": 0,
       "shipId": 2,
       "val": 0.5,
     },
     Object {
+      "goalIndex": 1,
       "shipId": 2,
       "val": 0.5,
     },
