@@ -1,4 +1,4 @@
-import { OwnShip } from 'halite/Ship';
+import { OwnShipId } from 'halite/Ship';
 import { maxBy } from 'ramda';
 
 import Goal from '../goal/goal';
@@ -7,7 +7,7 @@ import { ShipGoalValue } from './value';
 
 export interface GoalWithShips<Turn> {
   goal: Goal<Turn>;
-  ships: OwnShip<Turn>[];
+  shipIds: (number & OwnShipId<Turn>)[];
 }
 
 /**
@@ -23,7 +23,7 @@ const distributeShips = <Turn>(
       const entry = goalsWithShips.find(
         goalWithShips => goalWithShips.goal === goalValue.goal,
       );
-      return !entry || entry.ships.length < entry.goal.maxShips();
+      return !entry || entry.shipIds.length < entry.goal.maxShips();
     });
     if (goalValuesBelowMax.length) {
       const bestVal = goalValuesBelowMax.reduce(maxBy(value => value.val));
@@ -34,13 +34,13 @@ const distributeShips = <Turn>(
             goalWithShips.goal === bestVal.goal
               ? {
                   goal: goalWithShips.goal,
-                  ships: [...goalWithShips.ships, bestVal.ship],
+                  shipIds: [...goalWithShips.shipIds, bestVal.shipId],
                 }
               : goalWithShips,
         );
     }
     // Nothing to do for this ship
     return goalsWithShips;
-  }, shipGoalValues[0].map(shipGoalValue => ({ goal: shipGoalValue.goal, ships: [] as OwnShip<Turn>[] })));
+  }, shipGoalValues[0].map(shipGoalValue => ({ goal: shipGoalValue.goal, shipIds: [] as (number & OwnShipId<Turn>)[] })));
 
 export default distributeShips;

@@ -21,7 +21,10 @@ const assignGoalsToShips = <Turn>(
   return goalsWithShips.reduce(
     (acc, goalWithShips) => [
       ...acc,
-      ...goalWithShips.ships.map(ship => ({ ship, goal: goalWithShips.goal })),
+      ...goalWithShips.shipIds.map(shipId => ({
+        ship: gm.shipById(shipId),
+        goal: goalWithShips.goal,
+      })),
     ],
     [] as ShipGoal<Turn>[],
   );
