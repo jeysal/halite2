@@ -26,7 +26,6 @@ const calcShipGoalValue = <Turn>(
 
 /**
  * generates a 2D matrix of ship-goal values with suitability taken into account
- * TODO test
  */
 const generateShipGoalValues = <Turn>(
   goals: Goal<Turn>[],
