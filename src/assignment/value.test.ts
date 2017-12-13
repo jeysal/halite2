@@ -22,7 +22,7 @@ test('generates a value for each ship-goal combination', () => {
 
   expect(
     generateShipGoalValues([goal1, goal2], gm).map(goalValues =>
-      goalValues.map(value => value.val),
+      goalValues.map(({ goal, ...value }) => value),
     ),
   ).toMatchSnapshot();
 });
@@ -42,7 +42,7 @@ test('considers both value and suitability', () => {
 
   expect(
     generateShipGoalValues([goal1, goal2], gm).map(goalValues =>
-      goalValues.map(value => value.val),
+      goalValues.map(({ goal, ...value }) => value),
     ),
   ).toMatchSnapshot();
 });
