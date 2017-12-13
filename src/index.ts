@@ -1,7 +1,7 @@
 import { Action, start } from 'halite/Game';
 import GameMap from 'halite/GameMap';
 
-import assignGoalsToShips from './goal/assignment';
+import assignGoalsToShips from './assignment/assignment';
 import { determineAttackGoals } from './goal/attack/attack-goal';
 import { determineDockGoals } from './goal/dock/dock-goal';
 
