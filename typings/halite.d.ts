@@ -297,7 +297,7 @@ declare module 'halite/Planet' {
 
   export class FreePlanet<Turn = number> extends Planet<Turn> {
     readonly id: number & FreePlanetId<Turn>;
-    readonly ownerId: null;
+    readonly ownerId: undefined;
 
     readonly numberOfDockedShips: 0;
 
