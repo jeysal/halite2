@@ -32,7 +32,7 @@ GParsPool.withPool {
     [name: it.name, versionPath: versionPath]
   }.each {
     waitFor([MANAGER_PATH_FROM_VERSIONS,
-             '-A', it.name,
+             '-A', it.name.size() > 25 ? it.name.substring(0, 25) : it.name,
              '-p', "node $it.versionPath"]
       .execute())
   }
