@@ -7,5 +7,5 @@ export default interface Goal<Turn = number> {
   minShips(): number;
   maxShips(): number;
   suitability(ship: OwnShip<Turn>, gm: GameMap<Turn>): number;
-  strive(ship: OwnShip<Turn>): string & Action<Turn>;
+  strive(ship: OwnShip<Turn>, gm: GameMap<Turn>): string & Action<Turn>;
 };

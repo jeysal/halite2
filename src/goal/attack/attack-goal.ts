@@ -21,7 +21,7 @@ const MAX_SWARM_SIZE_RATIO = 2.5;
 const UNDOCKED_SUITABILITY_RATIO = 0.4;
 
 /**
- * The ship attac,
+ * ... but it also attac
  */
 export default class AttackGoal<Turn> implements Goal<Turn> {
   constructor(private enemySwarm: EnemyShip<Turn>[]) {}

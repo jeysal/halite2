@@ -21,5 +21,5 @@ export const goalStats = <Turn>(
   minShips: goal.minShips(),
   maxShips: goal.maxShips(),
   suitability: goal.suitability(ship as OwnShip<Turn>, gm),
-  action: goal.strive(ship as OwnShip<Turn>),
+  action: goal.strive(ship as OwnShip<Turn>, gm),
 });
