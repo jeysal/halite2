@@ -8,6 +8,7 @@
     "prettier": true,
     "no-console": true,
     "strict-boolean-expressions": false,
+    "no-increment-decrement": false,
     "import-name": false,
     "ordered-imports": [true, { "grouped-imports": true }]
   }

@@ -113,3 +113,26 @@ test('does not match a ship if all goals are at capacity', () => {
     })),
   ).toMatchSnapshot();
 });
+
+test('matches a ship to another goal to avoid undershooting minShips', () => {
+  const goals: Goal[] = [
+    { ...goalStub, minShips: () => 2 },
+    { ...goalStub, minShips: () => 1 },
+  ];
+
+  expect(
+    distributeShips([
+      [
+        { goal: goals[0], shipId: 0, val: 0.7 },
+        { goal: goals[1], shipId: 0, val: 0.3 },
+      ],
+      [
+        { goal: goals[0], shipId: 1, val: 0.3 },
+        { goal: goals[1], shipId: 1, val: 0.7 },
+      ],
+    ] as ShipGoalValue[][]).map(({ goal, shipIds }) => ({
+      shipIds,
+      goalIndex: goals.indexOf(goal),
+    })),
+  ).toMatchSnapshot();
+});

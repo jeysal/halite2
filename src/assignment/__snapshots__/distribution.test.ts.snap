@@ -54,6 +54,18 @@ Array [
 ]
 `;
 
+exports[`matches a ship to another goal to avoid undershooting minShips 1`] = `
+Array [
+  Object {
+    "goalIndex": 1,
+    "shipIds": Array [
+      1,
+      0,
+    ],
+  },
+]
+`;
+
 exports[`matches up the ships with their highest-value goals 1`] = `
 Array [
   Object {
