@@ -1,17 +1,9 @@
-import { Action } from 'halite/Game';
 import GameMap from 'halite/GameMap';
 
 import Goal from '../goal/goal';
+import { goalStub } from '../test/goal';
 
 import generateShipGoalValues from './value';
-
-const goalStub: Goal = {
-  value: () => 0.5,
-  minShips: () => 0,
-  maxShips: () => 16,
-  suitability: () => 0.5,
-  strive: () => '' as string & Action,
-};
 
 test('generates a value for each ship-goal combination', () => {
   const gm = new GameMap({ myPlayerId: 0, width: 100, height: 100 });
