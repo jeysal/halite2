@@ -12,7 +12,7 @@ Array [
   Object {
     "action": "t 42 7 279",
     "maxShips": 5,
-    "minShips": 3,
+    "minShips": 2,
     "suitability": 0.819351169392105,
     "value": 0.5002992600150155,
   },

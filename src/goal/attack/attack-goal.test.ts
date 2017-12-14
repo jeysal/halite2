@@ -34,11 +34,23 @@ describe('value', () => {
 
 describe('minShips', () => {
   test('returns a reasonable minimum for a small enemy swarm', () => {
-    expect(new AttackGoal(Array(1)).minShips()).toMatchSnapshot();
+    expect(
+      new AttackGoal(
+        Array(1).fill(
+          new Ship(emptyMap, 1, { dockingStatus: DockingStatus.UNDOCKED }),
+        ),
+      ).minShips(),
+    ).toMatchSnapshot();
   });
 
   test('returns a reasonable minimum for a large enemy swarm', () => {
-    expect(new AttackGoal(Array(8)).minShips()).toMatchSnapshot();
+    expect(
+      new AttackGoal(
+        Array(8).fill(
+          new Ship(emptyMap, 1, { dockingStatus: DockingStatus.UNDOCKED }),
+        ),
+      ).minShips(),
+    ).toMatchSnapshot();
   });
 });
 

@@ -44,7 +44,10 @@ export default class AttackGoal<Turn> implements Goal<Turn> {
   }
 
   minShips(): number {
-    return Math.round(this.enemySwarm.length * MIN_SWARM_SIZE_RATIO);
+    return Math.round(
+      this.enemySwarm.filter(enemyShip => enemyShip.isUndocked()).length *
+        MIN_SWARM_SIZE_RATIO,
+    );
   }
   maxShips(): number {
     return Math.ceil(this.enemySwarm.length * MAX_SWARM_SIZE_RATIO);
