@@ -5,7 +5,7 @@ import Goal from '../goal/goal';
 
 import { ShipGoalValue } from './value';
 
-export interface GoalWithShips<Turn> {
+export interface GoalWithShips<Turn = number> {
   goal: Goal<Turn>;
   shipIds: (number & OwnShipId<Turn>)[];
 }

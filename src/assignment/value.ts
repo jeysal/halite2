@@ -6,7 +6,7 @@ import Goal from '../goal/goal';
 const VALUE_IMPACT = 0.5;
 const SUITABILITY_IMPACT = 0.5;
 
-export interface ShipGoalValue<Turn> {
+export interface ShipGoalValue<Turn = number> {
   shipId: number & OwnShipId<Turn>;
   goal: Goal<Turn>;
   val: number;

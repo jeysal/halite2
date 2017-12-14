@@ -6,7 +6,7 @@ import Goal from '../goal/goal';
 import distributeShips from './distribution';
 import generateShipGoalValues from './value';
 
-export interface ShipGoal<Turn> {
+export interface ShipGoal<Turn = number> {
   ship: OwnShip<Turn>;
   goal: Goal<Turn>;
 }
