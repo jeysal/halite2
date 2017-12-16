@@ -35,11 +35,11 @@
     "ramda": "^0.25.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.34",
-    "@babel/core": "7.0.0-beta.34",
-    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.34",
-    "@babel/preset-env": "7.0.0-beta.34",
-    "@babel/preset-typescript": "7.0.0-beta.34",
+    "@babel/cli": "7.0.0-beta.35",
+    "@babel/core": "7.0.0-beta.35",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.35",
+    "@babel/preset-env": "7.0.0-beta.35",
+    "@babel/preset-typescript": "7.0.0-beta.35",
     "@types/jest": "^21.1.8",
     "@types/node": "^8.0.53",
     "@types/ramda": "^0.25.7",
