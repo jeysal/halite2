@@ -1,6 +1,6 @@
 import { Point } from 'halite/Geometry';
 
-import { closestPoint } from './distance';
+import { closestDistance, closestPoint } from './distance';
 
 describe('closestPoint', () => {
   test('selects the point closest to the origin', () => {
@@ -19,5 +19,16 @@ describe('closestPoint', () => {
 
   test('returns undefined for an empty array of points', () => {
     expect(closestPoint({ x: 0, y: 0 }, [])).toBeUndefined();
+  });
+});
+
+describe('closestDistance', () => {
+  test('returns the distance to the closest point from the origin', () => {
+    const origin: Point = { x: 0, y: 0 };
+    const closest: Point = { x: -3, y: 4 };
+
+    expect(
+      closestDistance(origin, [{ x: 5, y: 2 }, closest, { x: -4, y: 4 }]),
+    ).toBe(5);
   });
 });
