@@ -4,17 +4,17 @@ exports[`determineProtectGoals creates a protect goal for each own planet 1`] = 
 Array [
   Object {
     "action": "t 110 6 325",
-    "maxShips": 5,
+    "maxShips": 6,
     "minShips": 1,
     "suitability": 0.9646446609406727,
-    "value": 0.5947847788034125,
+    "value": 0.5098155246886393,
   },
 ]
 `;
 
 exports[`maxShips returns a reasonable maximum for a planet with 1 docked ship 1`] = `3`;
 
-exports[`maxShips returns a reasonable maximum for a planet with many docked ships 1`] = `15`;
+exports[`maxShips returns a reasonable maximum for a planet with many docked ships 1`] = `18`;
 
 exports[`strive navigates between the planet and the closest enemy ship 1`] = `"t 100 6 315"`;
 
@@ -26,10 +26,10 @@ exports[`suitability is low for a docked nearby ship 1`] = `0.475`;
 
 exports[`suitability is low for an undocked distant ship 1`] = `0.575`;
 
-exports[`value is high if an enemy is close 1`] = `0.6295242787073417`;
+exports[`value is high if an enemy is close 1`] = `0.5395922388920072`;
 
-exports[`value is high if many ships are docked 1`] = `0.6659776508214806`;
+exports[`value is high if many ships are docked 1`] = `0.5919801340635383`;
 
-exports[`value is low if just one ship is docked 1`] = `0.36998758378971147`;
+exports[`value is low if just one ship is docked 1`] = `0.29599006703176917`;
 
-exports[`value is low if no enemy is close 1`] = `0.008757328158897628`;
+exports[`value is low if no enemy is close 1`] = `0.00750628127905511`;

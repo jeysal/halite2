@@ -20,9 +20,9 @@ const dangerForDistance = (radius: number, max: number) =>
     [radius + DOCK_RADIUS + 4 * MAX_SPEED, 0.15],
     [max, 0.1],
   );
-const relevanceForDockedShips = interpolate([1, 0.5], [2, 0.7], [6, 0.9]);
+const relevanceForDockedShips = interpolate([1, 0.4], [2, 0.6], [6, 0.8]);
 
-const MAX_GUARDS_DOCK_RATIO = 2.5;
+const MAX_GUARDS_DOCK_RATIO = 3;
 
 const UNDOCKED_SUITABILITY_RATIO = 0.5;
 

@@ -12,10 +12,10 @@ import DockGoal from '../dock/dock-goal';
 import Goal from '../goal';
 
 const BASE_VALUE = 0.2;
-const valueForSwarmSize = (x: number): number => 0.4 * x * x / (x * x + 4 * x);
+const valueForSwarmSize = (x: number): number => 0.5 * x * x / (x * x + 4 * x);
 const DOCK_VALUE_RATIO = 0.75;
 
-const MIN_SWARM_SIZE_RATIO = 1.5;
+const MIN_SWARM_SIZE_RATIO = 1.2;
 const MAX_SWARM_SIZE_RATIO = 2.5;
 
 const UNDOCKED_SUITABILITY_RATIO = 0.4;
