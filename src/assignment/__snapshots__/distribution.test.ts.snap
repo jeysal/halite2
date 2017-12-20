@@ -64,6 +64,17 @@ Array [
 ]
 `;
 
+exports[`matches up a single ship with its highest-value goal 1`] = `
+Array [
+  Object {
+    "goalIndex": 2,
+    "shipIds": Array [
+      0,
+    ],
+  },
+]
+`;
+
 exports[`matches up the ships with their highest-value goals 1`] = `
 Array [
   Object {
@@ -87,3 +98,5 @@ Array [
   },
 ]
 `;
+
+exports[`prefers an empty array over violating minShips if the heuristic fails 1`] = `Array []`;
