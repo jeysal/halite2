@@ -17,17 +17,13 @@ Array [
 ]
 `;
 
-exports[`does not match a ship the has value zero everywhere 1`] = `
+exports[`does not match a ship that has value zero everywhere 1`] = `
 Array [
   Object {
     "goalIndex": 0,
     "shipIds": Array [
       0,
     ],
-  },
-  Object {
-    "goalIndex": 1,
-    "shipIds": Array [],
   },
 ]
 `;
@@ -37,18 +33,14 @@ Array [
   Object {
     "goalIndex": 0,
     "shipIds": Array [
-      2,
+      0,
     ],
-  },
-  Object {
-    "goalIndex": 1,
-    "shipIds": Array [],
   },
   Object {
     "goalIndex": 2,
     "shipIds": Array [
-      0,
       1,
+      2,
     ],
   },
 ]
@@ -57,10 +49,16 @@ Array [
 exports[`matches a ship to another goal to avoid undershooting minShips 1`] = `
 Array [
   Object {
+    "goalIndex": 0,
+    "shipIds": Array [
+      0,
+    ],
+  },
+  Object {
     "goalIndex": 1,
     "shipIds": Array [
       1,
-      0,
+      2,
     ],
   },
 ]
@@ -68,6 +66,13 @@ Array [
 
 exports[`matches up the ships with their highest-value goals 1`] = `
 Array [
+  Object {
+    "goalIndex": 2,
+    "shipIds": Array [
+      0,
+      3,
+    ],
+  },
   Object {
     "goalIndex": 0,
     "shipIds": Array [
@@ -78,13 +83,6 @@ Array [
     "goalIndex": 1,
     "shipIds": Array [
       2,
-    ],
-  },
-  Object {
-    "goalIndex": 2,
-    "shipIds": Array [
-      0,
-      3,
     ],
   },
 ]

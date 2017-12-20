@@ -36,7 +36,7 @@ test('matches up the ships with their highest-value goals', () => {
   ).toMatchSnapshot();
 });
 
-test('does not match a ship the has value zero everywhere', () => {
+test('does not match a ship that has value zero everywhere', () => {
   const goals: Goal[] = [{ ...goalStub }, { ...goalStub }];
 
   expect(
@@ -46,8 +46,8 @@ test('does not match a ship the has value zero everywhere', () => {
         { goal: goals[1], shipId: 0, val: 0.5 },
       ],
       [
-        { goal: goals[0], shipId: 0, val: 0 },
-        { goal: goals[1], shipId: 0, val: 0 },
+        { goal: goals[0], shipId: 1, val: 0 },
+        { goal: goals[1], shipId: 1, val: 0 },
       ],
     ] as ShipGoalValue[][]).map(({ goal, shipIds }) => ({
       shipIds,
@@ -116,19 +116,27 @@ test('does not match a ship if all goals are at capacity', () => {
 
 test('matches a ship to another goal to avoid undershooting minShips', () => {
   const goals: Goal[] = [
-    { ...goalStub, minShips: () => 2 },
     { ...goalStub, minShips: () => 1 },
+    { ...goalStub, minShips: () => 1 },
+    { ...goalStub, minShips: () => 3 },
   ];
 
   expect(
     distributeShips([
       [
-        { goal: goals[0], shipId: 0, val: 0.7 },
-        { goal: goals[1], shipId: 0, val: 0.3 },
+        { goal: goals[0], shipId: 0, val: 1 },
+        { goal: goals[1], shipId: 0, val: 0 },
+        { goal: goals[2], shipId: 0, val: 0 },
       ],
       [
-        { goal: goals[0], shipId: 1, val: 0.3 },
-        { goal: goals[1], shipId: 1, val: 0.7 },
+        { goal: goals[0], shipId: 1, val: 0 },
+        { goal: goals[1], shipId: 1, val: 0.3 },
+        { goal: goals[2], shipId: 1, val: 0.7 },
+      ],
+      [
+        { goal: goals[0], shipId: 2, val: 0 },
+        { goal: goals[1], shipId: 2, val: 0.3 },
+        { goal: goals[2], shipId: 2, val: 0.7 },
       ],
     ] as ShipGoalValue[][]).map(({ goal, shipIds }) => ({
       shipIds,
