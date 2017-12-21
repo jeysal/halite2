@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cornersOfMap returns the corners of the map 1`] = `
+Array [
+  Object {
+    "x": 0,
+    "y": 0,
+  },
+  Object {
+    "x": 0,
+    "y": 100,
+  },
+  Object {
+    "x": 100,
+    "y": 0,
+  },
+  Object {
+    "x": 100,
+    "y": 100,
+  },
+]
+`;

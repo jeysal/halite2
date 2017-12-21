@@ -11,5 +11,14 @@ export const distanceFromCenterOfMap = (
   point: Point,
 ): number => distance(point, centerOfMap(gm));
 
+export const cornersOfMap = (
+  gm: GameMap<any>,
+): [Point, Point, Point, Point] => [
+  { x: 0, y: 0 },
+  { x: 0, y: gm.height },
+  { x: gm.width, y: 0 },
+  { x: gm.width, y: gm.height },
+];
+
 export const diameter = (gm: GameMap<any>): number =>
   distance({ x: 0, y: 0 }, { x: gm.width, y: gm.height });

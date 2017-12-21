@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`strive navigates to the closest corner of the map 1`] = `"t 100 6 45"`;
+
+exports[`strive undocks a docked ship 1`] = `"u 100"`;
+
+exports[`suitability is high for a remote ship 1`] = `0.9146912192286945`;
+
+exports[`suitability is low for a central ship 1`] = `0.7400828044922853`;
+
+exports[`value is high if one enemy dominates the match and we are behind 1`] = `0.8`;
+
+exports[`value is low if the match is even 1`] = `0.3333333333333333`;
+
+exports[`value is low if we dominate the match 1`] = `0.1`;
+
+exports[`value is rather low if one enemy dominates the match, but we still stand a chance 1`] = `0.6`;

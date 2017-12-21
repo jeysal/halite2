@@ -1,8 +1,13 @@
 import GameMap from 'halite/GameMap';
 
-import { centerOfMap, diameter, distanceFromCenterOfMap } from './game-map';
+import {
+  centerOfMap,
+  cornersOfMap,
+  diameter,
+  distanceFromCenterOfMap,
+} from './game-map';
 
-describe('center', () => {
+describe('centerOfMap', () => {
   test('calculates the center of the map', () => {
     expect(
       centerOfMap(new GameMap({ myPlayerId: 0, width: 100, height: 100 })),
@@ -18,6 +23,14 @@ describe('distanceFromCenter', () => {
         { x: 53, y: 54 },
       ),
     ).toBe(5);
+  });
+});
+
+describe('cornersOfMap', () => {
+  test('returns the corners of the map', () => {
+    expect(
+      cornersOfMap(new GameMap({ myPlayerId: 0, width: 100, height: 100 })),
+    ).toMatchSnapshot();
   });
 });
 
