@@ -17,6 +17,15 @@ describe('value', () => {
     expect(new EscapeGoal().value(gm)).toMatchSnapshot();
   });
 
+  test('is high if we are the only losing party', () => {
+    const gm = new GameMap({ myPlayerId: 0, width: 100, height: 100 });
+    gm.addPlayerShips(0, [{}]);
+    gm.addPlayerShips(1, [{}, {}, {}, {}, {}, {}, {}, {}]);
+    gm.addPlayerShips(2, [{}, {}, {}, {}, {}, {}, {}, {}]);
+
+    expect(new EscapeGoal().value(gm)).toMatchSnapshot();
+  });
+
   test('is rather low if one enemy dominates the match, but we still stand a chance', () => {
     const gm = new GameMap({ myPlayerId: 0, width: 100, height: 100 });
     gm.addPlayerShips(0, [{}, {}, {}]);
@@ -35,7 +44,7 @@ describe('value', () => {
     expect(new EscapeGoal().value(gm)).toMatchSnapshot();
   });
 
-  test('is low if we dominate the match', () => {
+  test('is very low if we dominate the match', () => {
     const gm = new GameMap({ myPlayerId: 0, width: 100, height: 100 });
     gm.addPlayerShips(0, [{}, {}, {}, {}, {}, {}, {}, {}]);
     gm.addPlayerShips(1, [{}]);
@@ -74,7 +83,7 @@ describe('suitability', () => {
     ).toMatchSnapshot();
   });
 
-  test('is low for a central ship', () => {
+  test('is rather low for a central ship', () => {
     expect(
       new EscapeGoal().suitability(
         new Ship(emptyMap, 0, { x: 35, y: 35 }) as OwnShip,
