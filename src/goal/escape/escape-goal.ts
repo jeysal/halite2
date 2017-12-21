@@ -12,7 +12,8 @@ import {
 } from '../../geometry/game-map';
 import Goal from '../goal';
 
-const ENEMY_DOMINANCE_RATIO = 3.5;
+const ENEMY_DOMINANCE_MINIMUM = 15;
+const ENEMY_DOMINANCE_RATIO = 2.5;
 
 export default class EscapeGoal<Turn = number> implements Goal<Turn> {
   value(gm: GameMap<Turn>): number {
@@ -26,6 +27,8 @@ export default class EscapeGoal<Turn = number> implements Goal<Turn> {
     const highestEnemyShipCount = shipsPerEnemy
       .map(({ length }) => length)
       .reduce(max);
+
+    if (highestEnemyShipCount < ENEMY_DOMINANCE_MINIMUM) return 0;
 
     return Math.min(
       highestEnemyShipCount / (ENEMY_DOMINANCE_RATIO * gm.myShips.length),

@@ -12,8 +12,8 @@ exports[`value is high if one enemy dominates the match and we are behind 1`] = 
 
 exports[`value is high if we are the only losing party 1`] = `1`;
 
-exports[`value is low if the match is even 1`] = `0.2857142857142857`;
+exports[`value is low if the match is even 1`] = `0.4`;
 
-exports[`value is rather low if one enemy dominates the match, but we still stand a chance 1`] = `0.5714285714285714`;
+exports[`value is rather low if one enemy dominates the match, but we still stand a chance 1`] = `0.6666666666666666`;
 
-exports[`value is very low if we dominate the match 1`] = `0.03571428571428571`;
+exports[`value is very low if we dominate the match 1`] = `0.2`;
